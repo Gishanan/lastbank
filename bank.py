@@ -160,10 +160,10 @@ def check_balance():
 
 # View transaction history
 def view_transaction_history():
-    datetime.now()
     acc_no = authenticate()
     if not acc_no:
         return
+    datetime = get_datetime()    
     print(f"\nTransaction History for {datetime} {acc_no} ({accounts[acc_no]['name']}):")
     tx = accounts[acc_no]["transactions"]
     if not tx:
@@ -195,11 +195,11 @@ def transfer_money():
     if amount > accounts[sender]["balance"]:
         print("Insufficient funds.")
         return
-
+    datetime = get_datetime()
     accounts[sender]["balance"] -= amount
     accounts[receiver]["balance"] += amount
-    accounts[sender]["transactions"].append(f"Transfer to {receiver}: -{amount}")
-    accounts[receiver]["transactions"].append(f"Transfer from {sender}: +{amount}")
+    accounts[sender]["transactions"].append(f"{datetime}Transfer to {receiver}: -{amount}")
+    accounts[receiver]["transactions"].append(f"{datetime}Transfer from {sender}: +{amount}")
     save_accounts()
     print("====== Transfer successful ======")
 
