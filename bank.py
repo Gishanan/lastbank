@@ -123,7 +123,7 @@ def deposit_money():
     accounts[acc_no]["balance"] += amount
     accounts[acc_no]["transactions"].append(f"{datetime}Deposit: +{amount}")
     save_accounts()
-    print("====== Deposit successful ======")
+    print("👍7====== Deposit successful ======👍")
     print(f"New Balance: {accounts[acc_no]['balance']}")
 
 # Withdraw
@@ -147,7 +147,7 @@ def withdraw_money():
     accounts[acc_no]["balance"] -= amount
     accounts[acc_no]["transactions"].append(f"{datetime}Withdrawal: -{amount}")
     save_accounts()
-    print("====== Withdrawal successful ======")
+    print("👍====== Withdrawal successful ======👍")
     print(f"New Balance: {accounts[acc_no]['balance']}")
 
 # Check balance
@@ -201,13 +201,13 @@ def transfer_money():
     accounts[sender]["transactions"].append(f"{datetime}Transfer to {receiver}: -{amount}")
     accounts[receiver]["transactions"].append(f"{datetime}Transfer from {sender}: +{amount}")
     save_accounts()
-    print("====== Transfer successful ======")
+    print("👍====== Transfer successful ======👍")
 
 # Main menu
 def main():
     load_accounts()
     while True:
-        print("\n===== Banking Application =====")
+        print("\n🤖===== Banking Application =====🤖")
         print("1. Create Account")
         print("2. Deposit Money")
         print("3. Withdraw Money")
@@ -215,6 +215,7 @@ def main():
         print("5. Transaction History")
         print("6. Transfer Money")
         print("7. Exit")
+
 
         choice = input("Enter your choice: ").strip()
         if choice == '1':
@@ -230,10 +231,12 @@ def main():
         elif choice == '6':
             transfer_money()
         elif choice == '7':
-            print("Thank you for using the banking app!")
+            print("Thank you for using the banking app!👍👍👍")
             break
         else:
-            print("Invalid choice. Try again.")
+             print("Invalid choice. Try again.")
 
+
+#run bank app
 if __name__ == "__main__":
     main()
