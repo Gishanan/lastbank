@@ -24,7 +24,7 @@ def load_accounts():
                     "name": name,
                     "balance": float(balance),
                     "password": password,
-                    "transactions": transactions
+                    "transactions": []
                 }
 
 # Save accounts to file
