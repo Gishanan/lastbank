@@ -14,12 +14,13 @@ def load_accounts():
     with open(ACCOUNT_FILE, "r") as f:
         for line in f:
             parts = line.strip().split(",")
-            if len(parts) >= 7:
+            if len(parts) >= 8:
                 user_id, acc_no, name, balance, password, loan_money, tx_str = parts
                 transactions = tx_str.split("|") if tx_str else []
                 accounts[acc_no] = {
                     "user_id": user_id,
                     "name": name,
+                    "address" : address,
                     "balance": float(balance),
                     "password": password,
                     "loan_money": float(loan_money),  # Ensure loan_money is correctly loaded
@@ -28,10 +29,10 @@ def load_accounts():
 
 # Save accounts to file
 def save_accounts():
-    with open(ACCOUNT_FILE, "w") as f:
+    with open(ACCOUNT_FILE, "a") as f:
         for acc_no, acc in accounts.items():
             tx_str = "|".join(acc["transactions"])
-            f.write(f"{acc['user_id']},{acc_no},{acc['name']},{acc['balance']},{acc['loan_money']},{acc['password']},{tx_str}\n")
+            f.write(f"{acc['user_id']},{acc_no},{acc['name']},{acc['address']},{acc['balance']},{acc['loan_money']},{acc['password']},{tx_str}\n")
 
 # Generate user ID
 def create_account_id():
@@ -89,12 +90,17 @@ def create_account():
     accounts[acc_no] = {
         "user_id": user_id,
         "name": name,
+        "address" : address,
         "balance": balance,
         "password": password,
         "loan_money": loan_money,  # Ensure loan_money is initialized
         "transactions": []
     }
-    save_accounts()
+    with open(ACCOUNT_FILE, "a") as f:
+        for acc_no, acc in accounts.items():
+            tx_str = "|".join(acc["transactions"])
+            f.write(f"{acc['user_id']},{acc_no},{acc['name']},{acc['address']},{acc['balance']},{acc['loan_money']},{acc['password']},{tx_str}\n")
+
     print(f"Account created successfully! Account Number: {acc_no}")
 
 # Authenticate user
