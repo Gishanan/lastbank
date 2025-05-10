@@ -215,7 +215,7 @@ def loan_money():
     
     
     if accounts[acc_no]["balance"] < 5000:
-        print("You must have more than Rs. 5000 in your account to take a loan.")
+        print("your account balance is insufficient.")
         return
     
     try:
