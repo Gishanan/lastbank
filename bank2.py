@@ -224,7 +224,7 @@ def loan_money():
     accounts[acc_no]["balance"] += amount
     accounts[acc_no]["transactions"].append(f"{datetime}Deposit: +{amount}")
     save_accounts()
-    print("👍7====== lone successful ======👍")
+    print("👍7====== loan successful ======👍")
     print(f"New Balance: {accounts[acc_no]['balance']}")
 
 
