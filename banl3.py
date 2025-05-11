@@ -21,7 +21,7 @@ def load_accounts():
                     "user_id": user_id,
                     "name": name,
                     "address" : address,
-                    "balance": float(balance),
+                    "balance": float(balance), # float(Used to represent decimal numbers.)
                     "password": password,
                     "loan_money": float(loan_money),  # Ensure loan_money is correctly loaded
                     "transactions": transactions
@@ -105,7 +105,7 @@ def create_account():
 
 # Authenticate user
 def authenticate():
-    acc_no = input("Enter account number: ").strip()
+    acc_no = input("Enter account number: ").strip() #strip(Usually remove the space.)
     if acc_no not in accounts:
         print("Account not found.")
         return None
